@@ -7,7 +7,7 @@ public class Clinic {
         Semaphore therapistSemaphore = new Semaphore(1); // Семафор для терапевта
         Semaphore mrtSemaphore = new Semaphore(1); // Семафор для кабинета МРТ
 
-        int maxQueueLength = numPatients-1;
+        int maxQueueLength = numPatients-1; //поскольку максимальной длиной очереди будут все пациенты, кроме первого, который уже зашел к терапевту:)
         for (int i = 1; i < numPatients; i++) {
             new Thread(new Patient(i, therapistSemaphore, mrtSemaphore)).start();
         }
